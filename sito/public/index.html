@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SCELTA CARICO RESISTIVO PANNELLO FOTOVOLTAICO</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    /* Stili aggiuntivi */
+    .solar-panel {
+      max-width: 300px; /* Larghezza massima del container */
+      margin: 0 auto; /* Centra l'elemento */
+    }
+    .solar-panel img {
+      max-width: 100%; /* Rendi l'immagine responsive al suo contenitore */
+      display: block; /* Rimuovi eventuali spazi bianchi attorno all'immagine */
+      margin: 0 auto; /* Centra l'immagine all'interno del container */
+    }
+    .btn-toggle {
+  width: 100px;
+  height: 40px;
+  border-radius: 20px;
+  transition: background-color 0.3s;
+  /* Stili per lo stato OFF */
+  background-color: red;
+  color: white;
+}
+
+.btn-toggle.active {
+  /* Stili per lo stato ON */
+  background-color: green;
+  color: white;
+}
+
+  </style>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <!--  <script src="script.js"></script> Script per gestire lo stato dei pulsanti -->
+</head>
+<body>
+  <!--
+  <script>
+document.addEventListener('DOMContentLoaded', function() {
+  document.getElementById('accendiTutte').addEventListener('click', function() {
+      fetch('/turnOn0')
+        .then(response => response.text())
+        .then(message => alert(message))
+        .catch(error => console.error('Error turning on LED1:', error.message));
+    });
+    document.getElementById('turnOn1').addEventListener('click', function() {
+      fetch('/turnOn1')
+        .then(response => response.text())
+        .then(message => alert(message))
+        .catch(error => console.error('Error turning on LED1:', error.message));
+    });
+    document.getElementById('turnOn2').addEventListener('click', function() {
+      fetch('/turnOn2')
+        .then(response => response.text())
+        .then(message => alert(message))
+        .catch(error => console.error('Error turning on LED2:', error.message));
+    });
+    document.getElementById('turnOn3').addEventListener('click', function () {
+    fetch('/turnOn3')
+      .then(response => response.text())
+      .then(message => alert(message))
+      .catch(error => console.error('Error turning on LED3:', error.message));
+  });
+
+  // Event listener for button 4
+  document.getElementById('turnOn4').addEventListener('click', function () {
+    fetch('/turnOn4')
+      .then(response => response.text())
+      .then(message => alert(message))
+      .catch(error => console.error('Error turning on LED4:', error.message));
+  });
+
+  // Event listener for button 5
+  document.getElementById('turnOn5').addEventListener('click', function () {
+    fetch('/turnOn5')
+      .then(response => response.text())
+      .then(message => alert(message))
+      .catch(error => console.error('Error turning on LED5:', error.message));
+  });
+
+  // Event listener for button 6
+  document.getElementById('turnOn6').addEventListener('click', function () {
+    fetch('/turnOn6')
+      .then(response => response.text())
+      .then(message => alert(message))
+      .catch(error => console.error('Error turning on LED6:', error.message));
+  });
+
+  // Event listener for button 7
+  document.getElementById('turnOn7').addEventListener('click', function () {
+    fetch('/turnOn7')
+      .then(response => response.text())
+      .then(message => alert(message))
+      .catch(error => console.error('Error turning on LED7:', error.message));
+  });
+
+  // Event listener for button 8
+  document.getElementById('turnOn8').addEventListener('click', function () {
+    fetch('/turnOn8')
+      .then(response => response.text())
+      .then(message => alert(message))
+      .catch(error => console.error('Error turning on LED8:', error.message));
+  });
+  // Event listener for button 9
+  document.getElementById('turnOn9').addEventListener('click', function () {
+    fetch('/turnOn9')
+      .then(response => response.text())
+      .then(message => alert(message))
+      .catch(error => console.error('Error turning on LED9:', error.message));
+  });
+
+  // Event listener for button 10
+  document.getElementById('turnOn10').addEventListener('click', function () {
+    fetch('/turnOn10')
+      .then(response => response.text())
+      .then(message => alert(message))
+      .catch(error => console.error('Error turning on LED10:', error.message));
+  });
+
+  // Event listener for button 11
+  document.getElementById('turnOn11').addEventListener('click', function () {
+    fetch('/turnOn11')
+      .then(response => response.text())
+      .then(message => alert(message))
+      .catch(error => console.error('Error turning on LED11:', error.message));
+  });
+
+  // Event listener for button 12
+  document.getElementById('turnOn12').addEventListener('click', function () {
+    fetch('/turnOn12')
+      .then(response => response.text())
+      .then(message => alert(message))
+      .catch(error => console.error('Error turning on LED12:', error.message));
+  });
+
+  // Event listener for button 13
+  document.getElementById('turnOn13').addEventListener('click', function () {
+    fetch('/turnOn13')
+      .then(response => response.text())
+      .then(message => alert(message))
+      .catch(error => console.error('Error turning on LED13:', error.message));
+  });
+
+  // Event listener for button 14
+  document.getElementById('turnOn14').addEventListener('click', function () {
+    fetch('/turnOn14')
+      .then(response => response.text())
+      .then(message => alert(message))
+      .catch(error => console.error('Error turning on LED14:', error.message));
+  });
+
+  // Event listener for button 15
+  document.getElementById('turnOn15').addEventListener('click', function () {
+    fetch('/turnOn15')
+      .then(response => response.text())
+      .then(message => alert(message))
+      .catch(error => console.error('Error turning on LED15:', error.message));
+  });
+
+  // Event listener for button 16
+  document.getElementById('turnOn16').addEventListener('click', function () {
+    fetch('/turnOn16')
+      .then(response => response.text())
+      .then(message => alert(message))
+      .catch(error => console.error('Error turning on LED16:', error.message));
+  });   
+});
+
+
+
+</script>
+-->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Funzione per accendere e spegnere il LED
+    function toggleLED(ledNumber, button) {
+      const url = `/turnOn${ledNumber}`;
+      fetch(url)
+        .then(response => response.text())
+        .then(message => alert(message))
+        .catch(error => console.error(`Error turning on LED${ledNumber}:`, error.message));
+  
+      // Cambia classe e stile del pulsante
+      button.classList.toggle('active');
+  
+      // Cambia il testo del pulsante da Off a On o viceversa
+      const buttonText = button.textContent.trim();
+      button.textContent = buttonText === 'Off' ? 'On' : 'Off';
+    }
+  
+    // Funzione per ripristinare lo stato dei bottoni
+    function resetButtons() {
+      const buttons = document.querySelectorAll('.btn-toggle');
+      buttons.forEach(button => {
+        button.classList.remove('active');
+        button.textContent = 'Off'; // Ripristina il testo a 'Off'
+      });
+    }
+  
+    // Aggiungi event listener a tutti i bottoni
+    for (let i = 1; i <= 16; i++) {
+      const button = document.getElementById(`turnOn${i}`);
+      button.addEventListener('click', function () {
+        toggleLED(i, button);
+      });
+    }
+  
+    // Aggiungi event listener per il pulsante di accensione totale
+    document.getElementById('accendiTutte').addEventListener('click', function() {
+      fetch('/turnOn0')
+        .then(response => response.text())
+        .then(message => alert(message))
+        .catch(error => console.error('Error turning on all LEDs:', error.message));
+  
+      // Cambia classe, stile e testo di tutti i pulsanti
+      const buttons = document.querySelectorAll('.btn-toggle');
+      buttons.forEach(button => {
+        button.classList.add('active');
+        button.textContent = 'On';
+      });
+    });
+  
+    // Aggiungi event listener per il pulsante di reset
+    document.getElementById('resetButton').addEventListener('click', function () {
+      resetButtons();
+    });
+  
+    // Ripristina lo stato dei bottoni dalla memoria locale
+    for (let i = 1; i <= 16; i++) {
+      const button = document.getElementById(`turnOn${i}`);
+      const isActive = localStorage.getItem(`LED${i}`);
+      if (isActive === 'true') {
+        button.classList.add('active');
+        button.textContent = 'On';
+      }
+    }
+  });
+  
+  // Salva lo stato dei bottoni nella memoria locale prima di chiudere la pagina
+  window.addEventListener('beforeunload', function () {
+    const buttons = document.querySelectorAll('.btn-toggle');
+    buttons.forEach((button, index) => {
+      const isActive = button.classList.contains('active');
+      localStorage.setItem(`LED${index + 1}`, isActive);
+    });
+  });
+  </script>
+  
+  
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+      <a class="navbar-brand" href="#">Pagina selezione Resistenze di Potenza</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="menu.html">Torna al Menu Principale</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container text-center mt-4">
+    <h1>SCELTA CARICO RESISTIVO PANNELLO FOTOVOLTAICO</h1>
+
+    <div class="solar-panel mt-4">
+      <img src="resistenze.png" class="img-fluid" alt="Pannello Solare">
+    </div>
+
+    <button id="accendiTutte" class="btn btn-primary">Accendi tutte le resistenze</button>
+    <button id="resetButton" class="btn btn-warning">Resetta Stato</button>
+
+    <div class="row mt-4">
+      <!-- Prima riga di 4 cards -->
+      <div class="col-md-3">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Resistenza 1</h5>
+            <p class="card-text">Valore: 10Ω</p>
+           <button id="turnOn1" class="btn btn-toggle" >Off</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Resistenza 2</h5>
+            <p class="card-text">Valore: 20Ω</p>
+            <button id="turnOn2" class="btn btn-toggle" >Off</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Resistenza 3</h5>
+            <p class="card-text">Valore: 30Ω</p>
+            <button  id="turnOn3" class="btn btn-toggle">Off</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Resistenza 4</h5>
+            <p class="card-text">Valore: 40Ω</p>
+            <button id="turnOn4" class="btn btn-toggle">Off</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row mt-4">
+      <div class="col-md-3">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Resistenza 5</h5>
+            <p class="card-text">Valore: 30Ω</p>
+            <button id="turnOn5" class="btn btn-toggle" >Off</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Resistenza 6</h5>
+            <p class="card-text">Valore: 30Ω</p>
+            <button id="turnOn6" class="btn btn-toggle" >Off</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Resistenza 7</h5>
+            <p class="card-text">Valore: 30Ω</p>
+            <button id="turnOn7" class="btn btn-toggle">Off</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Resistenza 8</h5>
+            <p class="card-text">Valore: 30Ω</p>
+            <button id="turnOn8" class="btn btn-toggle" >Off</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row mt-4">
+      <div class="col-md-3">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Resistenza 9</h5>
+            <p class="card-text">Valore: 30Ω</p>
+            <button id="turnOn9" class="btn btn-toggle" >Off</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Resistenza 10</h5>
+            <p class="card-text">Valore: 30Ω</p>
+            <button id="turnOn10" class="btn btn-toggle" >Off</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Resistenza 11</h5>
+            <p class="card-text">Valore: 30Ω</p>
+            <button id="turnOn11"class="btn btn-toggle" >Off</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Resistenza 12</h5>
+            <p class="card-text">Valore: 30Ω</p>
+            <button id="turnOn12" class="btn btn-toggle" >Off</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mt-4">
+      <div class="col-md-3">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Resistenza 13</h5>
+            <p class="card-text">Valore: 30Ω</p>
+            <button id="turnOn13" class="btn btn-toggle" >Off</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Resistenza 14</h5>
+            <p class="card-text">Valore: 30Ω</p>
+            <button id="turnOn14" class="btn btn-toggle" >Off</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Resistenza 15</h5>
+            <p class="card-text">Valore: 30Ω</p>
+            <button id="turnOn15" class="btn btn-toggle" >Off</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Resistenza 16</h5>
+            <p class="card-text">Valore: 30Ω</p>
+            <button id="turnOn16" class="btn btn-toggle" >Off</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+    </div>
+  </div>
+
+  
+</body>
+</html>

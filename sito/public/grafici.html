@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GRAFICI SENSORI</title>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    /* Stili per centrare il contenuto */
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0;
+      flex-direction: column; /* Aggiunto per la visualizzazione su dispositivi mobili */
+    }
+
+    /* Stili per i grafici */
+    .chart {
+      width: 80%;
+      margin: 20px auto;
+    }
+
+    /* Stili responsivi per dispositivi mobili */
+    @media screen and (max-width: 600px) {
+      .chart {
+        width: 90%;
+        margin: 10px auto; /* Margine inferiore ridotto per dispositivi mobili */
+      }
+    }
+  </style>
+</head>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+      <a class="navbar-brand" href="#">Pagina Grafici</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="menu.html">Torna al Menu Principale</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+</nav>
+<body>
+  <h1 class="text-center">GRAFICI SENSORI</h1>
+
+  <div class="chart" id="chart1"></div>
+  <div class="chart" id="chart2"></div>
+  <div class="chart" id="chart3"></div>
+
+  <script>
+    // Funzione per fare la richiesta API e disegnare il grafico
+    async function fetchDataAndDrawChart(divId, title, xAxisTitle, yAxisTitle) {
+      try {
+        // Effettua la richiesta API
+        const response = await fetch('/api/datigrafici'); // Sostituisci con il percorso corretto della tua API
+        const data = await response.json();
+  
+        // Estrai i dati dalla risposta
+        const dataX = data.values.map(entry => entry.voltage);
+        const dataYCurrent = data.values.map(entry => entry.current);
+        
+        // Calcola la potenza utilizzando la legge di Ohm: Potenza = Voltaggio * Corrente
+        const dataYPower = dataX.map((voltage, index) => voltage * dataYCurrent[index]);
+  
+        // Trova il punto di massima potenza
+        const maxPowerIndex = dataYPower.indexOf(Math.max(...dataYPower));
+        const mppVoltage = dataX[maxPowerIndex];
+        const mppCurrent = dataYCurrent[maxPowerIndex];
+
+        // Disegna i grafici
+        // Disegna i grafici con curva e punti
+          drawScatterChart(divId, dataX, dataYCurrent, 'Grafico Voltaggio Corrente', xAxisTitle, yAxisTitle);
+          drawScatterChart(divId + 'Power', dataX, dataYPower, 'Grafico Potenza Voltaggio', xAxisTitle, 'Potenza', mppVoltage, Math.max(...dataYPower));
+
+
+        // Disegna il punto MPP sui grafici
+        drawMPPMarker(divId, mppVoltage, mppCurrent);
+        drawMPPMarker(divId + 'Power', mppVoltage, dataYPower[maxPowerIndex]);
+      } catch (error) {
+        console.error('Errore nella richiesta API:', error.message);
+      }
+    }
+  
+    // Funzione per disegnare il grafico
+    // Funzione per disegnare il grafico con curva e punti
+function drawScatterChart(divId, dataX, dataY, title, xAxisTitle, yAxisTitle, mppVoltage, mppPower) {
+  // Definisci la traccia per la curva
+  var traceCurve = {
+    x: dataX,
+    y: dataY,
+    mode: 'lines', // Specifica il tipo di grafico come "lines" per disegnare una curva
+    line: { color: 'blue' } // Colore della curva
+  };
+
+  // Definisci la traccia per i punti
+  var traceMarkers = {
+    x: dataX,
+    y: dataY,
+    mode: 'markers', // Specifica il tipo di grafico come "markers" per disegnare i punti
+    marker: { color: 'black', size: 5 } // Stile dei punti
+  };
+
+  // Definisci la traccia per il punto MPP
+  var traceMPP = {
+    x: [mppVoltage],
+    y: [mppPower],
+    mode: 'markers',
+    marker: {
+      color: 'red',
+      size: 10,
+      symbol: 'circle',
+      line: { color: 'red', width: 2, dash: 'dash' } // Linea tratteggiata per il punto MPP
+    }
+  };
+
+  // Definisci il layout del grafico
+  var layout = {
+    title: title,
+    xaxis: { title: xAxisTitle },
+    yaxis: { title: yAxisTitle }
+  };
+
+  // Aggiungi tutte le tracce al grafico
+  var data = [traceCurve, traceMarkers, traceMPP];
+
+  // Disegna il grafico
+  Plotly.newPlot(divId, data, layout);
+}
+
+
+    // Funzione per disegnare il marker del MPP
+    function drawMPPMarker(divId, voltage, current) {
+      var trace = {
+        x: [voltage],
+        y: [current],
+        mode: 'markers',
+        marker: {
+          color: 'red',
+          size: 10,
+          symbol: 'circle',
+          line: {
+            color: 'red',
+            width: 2,
+            dash: 'dash' // Linea tratteggiata
+          }
+        },
+        type: 'scatter'
+      };
+
+      Plotly.addTraces(divId, trace);
+    }
+  
+    // Chiama la funzione per disegnare i grafici con i dati ottenuti dall'API
+    fetchDataAndDrawChart('chart1', 'Grafico Voltaggio Corrente', 'Voltaggio', 'Corrente');
+    fetchDataAndDrawChart('chart2', 'Grafico Potenza Voltaggio', 'Voltaggio', 'Potenza');
+  </script>
+</body>
+</html>

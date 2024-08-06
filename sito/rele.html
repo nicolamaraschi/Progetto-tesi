@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SCELTA CARICO RESISTIVO PANNELLO FOTOVOLTAICO</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    /* Stili aggiuntivi */
+    .solar-panel {
+      max-width: 300px; /* Larghezza massima del container */
+      margin: 0 auto; /* Centra l'elemento */
+    }
+    .solar-panel img {
+      max-width: 100%; /* Rendi l'immagine responsive al suo contenitore */
+      display: block; /* Rimuovi eventuali spazi bianchi attorno all'immagine */
+      margin: 0 auto; /* Centra l'immagine all'interno del container */
+    }
+    .btn-toggle {
+  width: 100px;
+  height: 40px;
+  border-radius: 20px;
+  transition: background-color 0.3s;
+  /* Stili per lo stato OFF */
+  background-color: red;
+  color: white;
+}
+
+.btn-toggle.active {
+  /* Stili per lo stato ON */
+  background-color: green;
+  color: white;
+}
+
+  </style>
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+      <a class="navbar-brand" href="#">Pagina selezione Resistenze di Potenza</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="menu.html">Torna al Menu Principale</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container text-center mt-4">
+    <h1>SCELTA CARICO RESISTIVO PANNELLO FOTOVOLTAICO</h1>
+
+    <div class="solar-panel mt-4">
+      <img src="resistenze.png" class="img-fluid" alt="Pannello Solare">
+    </div>
+
+    <button id="accendiTutte" class="btn btn-primary">Accendi tutte le resistenze</button>
+
+    <div class="row mt-4">
+      <!-- Prima riga di 4 cards -->
+      <div class="col-md-3">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Resistenza 1</h5>
+            <p class="card-text">Valore: 10Ω</p>
+            <button class="btn btn-toggle" data-id="1">Off</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Resistenza 2</h5>
+            <p class="card-text">Valore: 20Ω</p>
+            <button class="btn btn-toggle" data-id="2">Off</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Resistenza 3</h5>
+            <p class="card-text">Valore: 30Ω</p>
+            <button class="btn btn-toggle" data-id="3">Off</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Resistenza 4</h5>
+            <p class="card-text">Valore: 40Ω</p>
+            <button class="btn btn-toggle" data-id="4">Off</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row mt-4">
+      <div class="col-md-3">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Resistenza 5</h5>
+            <p class="card-text">Valore: 30Ω</p>
+            <button class="btn btn-toggle" data-id="3">Off</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Resistenza 6</h5>
+            <p class="card-text">Valore: 30Ω</p>
+            <button class="btn btn-toggle" data-id="3">Off</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Resistenza 7</h5>
+            <p class="card-text">Valore: 30Ω</p>
+            <button class="btn btn-toggle" data-id="3">Off</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Resistenza 8</h5>
+            <p class="card-text">Valore: 30Ω</p>
+            <button class="btn btn-toggle" data-id="3">Off</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row mt-4">
+      <div class="col-md-3">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Resistenza 9</h5>
+            <p class="card-text">Valore: 30Ω</p>
+            <button class="btn btn-toggle" data-id="3">Off</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Resistenza 10</h5>
+            <p class="card-text">Valore: 30Ω</p>
+            <button class="btn btn-toggle" data-id="3">Off</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Resistenza 11</h5>
+            <p class="card-text">Valore: 30Ω</p>
+            <button class="btn btn-toggle" data-id="3">Off</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Resistenza 12</h5>
+            <p class="card-text">Valore: 30Ω</p>
+            <button class="btn btn-toggle" data-id="3">Off</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mt-4">
+      <div class="col-md-3">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Resistenza 13</h5>
+            <p class="card-text">Valore: 30Ω</p>
+            <button class="btn btn-toggle" data-id="3">Off</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Resistenza 14</h5>
+            <p class="card-text">Valore: 30Ω</p>
+            <button class="btn btn-toggle" data-id="3">Off</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Resistenza 15</h5>
+            <p class="card-text">Valore: 30Ω</p>
+            <button class="btn btn-toggle" data-id="3">Off</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Resistenza 16</h5>
+            <p class="card-text">Valore: 30Ω</p>
+            <button class="btn btn-toggle" data-id="3">Off</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="script.js"></script> <!-- Script per gestire lo stato dei pulsanti -->
+</body>
+</html>
